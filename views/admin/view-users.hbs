@@ -1,0 +1,119 @@
+<section>
+    <div class="container">
+
+      <div class="row mt-4">
+         <a href="/admin/add-user" class="btn btn-success ml-auto mb-5">Add Users</a>
+        </div>
+        <table class="table mt-5" id="productTable">
+  <thead>
+    <tr>
+    <th scope="col">Sl No</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Status</th>
+      <th scope="col">Option</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {{!-- {{#each users}} --}}
+    <tr>
+      <td>{{@ index}}</td>
+      <td>{{this.fname}}</td>
+      <td>{{this.lname}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.number}}</td>
+      <td>{{this.status}}</td>
+      
+   {{#each users}}
+        <tr class="list-item">
+          <td scope="row">{{ @index}}</td>
+          <td>{{this.fname}}</td>
+          <td>{{this.lname}}</td>
+          <td>{{this.email}}</td>
+          <td>{{this.number}}</td>
+          {{#if status}}
+          <td style="color: rgb(91, 186, 91);">Active</td>
+          {{else}}
+          <td style="color:crimson">Blocked</td>
+          {{/if}}
+          <td>
+            {{#if this.status}}
+            <a
+            class="btn btn-danger" onclick="blockUser(event)" name="{{this.fname}}"
+            {{!-- class="btn btn-danger" onclick="return ('Are you want to block {{this.name}} ?')" name="{{this.name}}" --}}
+              href="/admin/block-User?id={{this._id}}&name={{this.name}}">Block</a>
+              
+            {{else}}
+            <a  
+            {{!-- class="btn btn-success" onclick="unblockUser('{{this.name}}')" name="{{this.fname}}" --}}
+             class="btn btn-success" onclick="unblockUser(event)" name="{{this.fname}}"
+              href="/admin/unblock-User?id={{this._id}}">Unblock</a>
+
+              
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+
+
+      
+    </tr>
+    
+  </tbody>
+</table>
+    </div>
+    </section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+<script>
+  function blockUser(event){
+  var link=event.currentTarget.href;
+  var name=event.currentTarget.name;
+  event.preventDefault()
+
+  Swal.fire({
+    title: 'Are you sure?',
+  text: "Do you want to block"+" "+name,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Block'
+}).then((result)=>{
+   if(result.isConfirmed){
+    window.location=link
+   }else{
+    return false;
+   }
+  })
+ }
+</script>
+
+<script>
+  function unblockUser(event){
+    var link=event.currentTarget.href;
+    var name=event.currentTarget.name;
+    event.preventDefault()
+
+    Swal.fire({
+  title: 'Are you sure?',
+  text: "Do you want to unblock"+" "+name,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Unblock'
+}).then((result) => {
+  if (result.isConfirmed) {
+   window.location=link
+  }else{
+    return false
+  }
+})
+  }
+</script>
+

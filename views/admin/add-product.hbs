@@ -1,0 +1,126 @@
+<section>
+    <div class="container mt-4">
+     <div class="row">
+         <div class="col-md-6">
+             <h2 class="text-center">Add Product</h2>
+             <form action="/admin/add-product" method="post" enctype="multipart/form-data" id="form">
+                 <label for="">Name</label>
+                 <input type="text" name="name" class="form-control" id="name" required>
+                 <span id="errorName" style="color:crimson"></span>
+
+                  <label for="">Category</label><br>
+        
+             <select id="name" class="selectpicker product-add-catagory" name="category" id="">
+              <option  value="">select</option>
+              {{#each categorys}}
+              <option  value="{{this.category_name}}">{{this.category_name}}</option>
+               <span id="categoryErr" style="color:crimson"></span><br> 
+              {{/each}}
+            </select><br> 
+
+                 <label for="">Price</label>
+                 <input type="number" name="Price" class="form-control" id="price" required>
+                  <span id="errorPrice" style="color:crimson"></span>
+
+                 <label for="">Description</label>
+                 <input type="text" name="Description" class="form-control" id="description" required>
+                <span id="errorDescription" style="color:crimson"></span>
+
+                 <label for="">Image 1</label>
+                 <input type="file" name="Image1" class="form-control" id="Image1" onchange="viewImage1(event)"  required>
+                 <span id="errorImage1" style="color:crimson"></span>
+
+                 <label for="">Image 2</label>
+                 <input type="file" name="Image2" id="Image2" class="form-control" required>
+                 <span id="errorImage2" style="color: crimson"></span>
+                 
+                 <label for="">Image 3</label>
+                 <input type="file" name="Image3" id="Image3" class="form-control" required>
+                 <span id="errorImage" style="color: crimson"></span>
+                 
+                 
+                 
+                 
+
+             
+
+
+
+                 <button type="Submit" class="btn btn-success mt-4">Submit</button>
+
+             </form>
+         </div>
+     </div>
+    </div>
+    
+</section>
+
+<script>
+  function viewImage1(event){
+    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+
+  }
+</script>
+<script>
+let form=document.getElementById('form')
+
+	let name=document.getElementById('name')
+	let category=document.getElementById('category_name')
+    let price=document.getElementById('price')
+	let description=document.getElementById('description')
+	
+	
+
+
+	let nameErr=document.getElementById('errorName')
+    let categoryErr=document.getElementById('categoryErr')
+    let priceErr=document.getElementById('errorPrice')
+	let descriptionErr=document.getElementById('errorDescription')
+	
+
+
+  let nameMsg=[]
+  let priceMsg=[]
+  let categoryMsg=[]
+  let descriptionMsg=[]
+  document.getElementById('form').addEventListener('submit',(e)=>{
+    if(name.value==''||name.value==null){
+      nameMsg.push('Please enter the name')
+    }
+
+    if(price.value==null||price.value==""){
+      priceMsg.push('Enter the Price')
+    }else if(isNaN(price.value)==true){
+      priceMsg.push("Price must be in Number format")
+    }
+
+    if(category.value==null||category.value==""){
+      categoryMsg.push("Select a Category")
+    }
+
+    if(description.value==null||description.value==""){
+      descriptionMsg.push('Enter discription')
+    }
+
+
+
+
+    if(nameMsg.length>0){
+    e.preventDefault()
+    nameErr.innerHTML=titleMsg.join('')
+    }
+    if(priceMsg.length>0){
+      e.preventDefault()
+      priceErr.innerHTML=priceMsg.join('')
+    }
+    if(categoryMsg.length>0){
+      e.preventDefault()
+      categoryErr.innerHTML=categoryMsg.join('')
+    }
+    if(descriptionMsg.length>0){
+      e.preventDefault()
+      descriptionErr.innerHTML=descriptionMsg.join('')
+    }
+  })
+
+</script>

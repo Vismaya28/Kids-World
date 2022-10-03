@@ -1,0 +1,144 @@
+<body>
+  
+
+
+<script src="https://unpkg.com/js-image-zoom@0.4.1/js-image-zoom.js" type="application/javascript"></script>
+
+<div class="breadcrumbs">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-6 col-md-6 col-12">
+<div class="breadcrumbs-content">
+<h1 class="page-title">Single Product</h1>
+</div>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+<ul class="breadcrumb-nav">
+<li><a href="index-2.html"><i class="lni lni-home"></i> Home</a></li>
+<li><a href="index-2.html">Shop</a></li>
+<li>Single Product</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+<section class="item-details section">
+<div class="container">
+<div class="top-area">
+<div class="row align-items-center">
+<div class="col-lg-6 col-md-12 col-12">
+<div class="product-images">
+<main id="gallery">
+<div class="main-img" id="img-container">
+<img src="/images/{{product._id}}.jpg" id="current" alt="#">
+
+</div>
+<div class="images" id="img">
+<img src="/images/{{product._id}}.jpg" class="img" alt="#">
+<img src="/images/{{product._id}}a.jpg" class="img" alt="#">
+<img src="/images/{{product._id}}b.jpg" class="img" alt="#">
+
+</div>
+</main>
+</div>
+</div>
+<div class="col-lg-6 col-md-12 col-12">
+<div class="product-info">
+<h2 class="title">{{product.Name}}</h2>
+
+<h5 class="category">{{product.category_name}}</h5>
+{{#if product.offer}}
+<h6 class="offer">Offer %: <span>{{product.offerPer}}</span></h6>
+<h6 class="offerPrice">Current price:₹ {{product.Price}}</h6>
+{{/if}}
+<h6 class="rice">Price:₹{{product.actualPrice}}</h6>
+{{!-- {{#if product.offer}}
+
+              <span class="sale-tag">-{{product.offerPer}}%</span>
+              {{/if}}
+        
+        <div class="price">
+          <span>Price:₹{{product.Price}}</span><br>
+          {{#if product.offer}}
+          <span class="discount-price">Old price:₹{{product.actualPrice}}</span>
+          {{/if}}
+        </div> --}}
+<p class="info-text">{{product.Description}}</p>
+
+<div class="bottom-content">
+<div class="row align-items-end">
+<div class="col-lg-4 col-md-4 col-12">
+<div class="button cart-button">
+<button class="btn" type="submit" onclick="addToCart('{{product._id}}')" style="width: 100%;">Add to Cart</button>
+</div>
+</div>
+
+<div class="col-lg-4 col-md-4 col-12">
+<div class="wish-button">
+<button class="btn" ><i class="lni lni-heart"></i> To Wishlist</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+  #current{
+    margin-left: 100px;
+    
+  }
+
+.item-details{
+  margin-top:  -91px;;
+}
+
+ 
+</style>
+<script>
+  var options = {
+    width:300,
+    height: 400,
+    zoomWidth:700,
+    offset:{vertical:0,horizontal:10},
+    scale:1.0
+
+  }
+  new ImageZoom(document.getElementById("img-container"),options)
+</script>
+<script type="text/javascript">
+        const current = document.getElementById("current");
+        const opacity = 0.6;
+        const imgs = document.querySelectorAll(".img");
+        imgs.forEach(img => {
+            img.addEventListener("click", (e) => {
+                //reset opacity
+                imgs.forEach(img => {
+                    img.style.opacity = 1;
+                });
+                current.src = e.target.src;
+                //adding class 
+                //current.classList.add("fade-in");
+                //opacity
+                e.target.style.opacity = opacity;
+            });
+        });
+    </script>
+
+    <script>
+      function addToCart(proId){
+        $.ajax({
+          url:'add-to-cart/:id',
+          method:'get',
+          success:(response)=>{
+            if(response.status){
+              location.reload()
+            }
+          }
+        })
+      }
+    </script>
+</body>

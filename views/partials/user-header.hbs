@@ -1,0 +1,236 @@
+
+<section>
+    <header class="header navbar-area">
+
+<div class="topbar">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-4 col-md-4 col-12">
+<div class="top-left">
+{{!-- <ul class="menu-top-link">
+<li>
+<div class="select-position">
+<select id="select4">
+<option href="/user/view-products">Kids world</option>
+<a href="/user/view-products">Kids Wor</a>
+
+</select>
+</div>
+</li>
+
+</ul> --}}
+<button class="btn btn-dark" href="/user/view-products">Kids World</button>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-12">
+<div class="top-middle">
+<ul class="useful-links">
+<li><a href="">Home</a></li>
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<div class="col-lg-4 col-md-4 col-12">
+<div class="top-end">
+ <div class="user">
+<i class="lni lni-user"></i>
+
+{{#if user}}
+<a href="/profile">{{user.fname}}</a>
+{{else}}
+Account{{/if}}
+
+
+
+</div>
+<ul class="user-login">
+    {{#if user}}
+<li><a href="logout">Logout</a></li>
+{{else}}
+<li><a href="login">Login</a></li>
+{{/if}}
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="header-middle">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-3 col-md-3 col-7">
+
+
+
+</div>
+<div class="col-lg-5 col-md-7 d-xs-none">
+
+<div class="main-menu-search">
+
+<div class="navbar-search search-style-5">
+{{!-- <div class="search-select">
+
+</div> --}}
+<div class="search-input">
+<input type="text" placeholder="Search">
+</div>
+<div class="search-btn">
+<button><i class="lni lni-search-alt"></i></button>
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="col-lg-4 col-md-2 col-5">
+<div class="middle-right-area">
+{{#if user}}
+<div class="navbar-cart">
+<div class="wishlist">
+<a href="/wishlist">
+<i class="lni lni-heart"></i>
+{{#if wishCount}}
+
+
+<span class="total-items">{{wishCount}}</span>
+
+
+</a>
+{{/if}}
+</div>
+<div class="cart-items">
+<a href="/cart" class="main-btn">
+<i class="lni lni-cart"></i>
+{{#if cartCount}}
+<span class="total-items">{{cartCount}}</span>
+</a>
+{{/if}}
+</div>
+{{!-- <div class="orders">
+    <button href="/order" class="btn btn-light">Order</button>
+</div> --}}
+{{!-- <div class="orders">
+    <li>
+ <a href="/orders" class="nav-link px-0"> <span class="d-none d-sm-inline">Orders</span></a>
+                            </li>
+</div> --}}
+
+<div class="orders">
+    {{!-- <a href="/orders" class="btn btn-light">Order</a> --}}
+       <a href="/orders" class="btn btn-light">Orders</a>
+
+</div>
+</div>
+{{/if}}
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-8 col-md-6 col-12">
+<div class="nav-inner">
+
+
+ {{!-- <button class="btn btn-primary btn-lg" id="girl">Girl</button>
+<button class="btn btn-primary btn-lg" id="boy">Boy</button>  --}}
+ {{!-- <div class="d-flex">
+{{#each data}}
+<button class="button" onclick="catChange('{{products}}')">{{this.category_name}}</button>
+{{/each}}
+</div> --}}
+
+
+
+<nav class="navbar navbar-expand-lg">
+<button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="toggler-icon"></span>
+<span class="toggler-icon"></span>
+<span class="toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+<ul id="nav" class="navbar-nav ms-auto">
+
+<li class="nav-item"><a href="blog-single.html"></a></li>
+<li class="nav-item"><a href="blog-single-sidebar.html">
+</a></li>
+</ul>
+</li>
+{{!-- <li class="nav-item">
+<a href="contact.html" aria-label="Toggle navigation"></a>
+</li> --}}
+</ul>
+</div> 
+</nav>
+
+</div>
+</div>
+<div class="col-lg-4 col-md-6 col-12">
+
+
+
+
+<div class="nav-social">
+<h5 class="title">Follow Us:</h5>
+<ul>
+<li>
+<a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
+</li>
+<li>
+<a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
+</li>
+<li>
+<a href="javascript:void(0)"><i class="lni lni-instagram"></i></a>
+</li>
+<li>
+<a href="javascript:void(0)"><i class="lni lni-skype"></i></a>
+</li>
+</ul>
+</div>
+
+</div>
+</div>
+</div>
+
+</header>
+</section>
+
+<style>
+
+.button {
+     transition-duration: 0.4s;
+    width: 109px;
+    border-radius: 10px;
+    background-color: transparent;
+    color: rgb(44, 120, 212);
+    box-shadow: 10px;
+    height: 33px;
+    border-color: #2787e8;
+    text-size-adjust: 10px;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.button:hover {
+  background-color: #4678c8; /* Green */
+  color: white;
+  width: 120px;
+  height:38px ;
+}
+
+</style>
+<script>
+    function catChange(products){
+
+    }
+</script>

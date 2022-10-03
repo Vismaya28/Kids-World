@@ -1,0 +1,192 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Registration</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href=""><i class="lni lni-home"></i> Home</a></li>
+                    <li>Registration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                <div class="register-form">
+                    <div class="title">
+                        <h3>No Account? Register</h3>
+                        <p>Registration takes less than a minute but gives you full control over your orders.</p>
+                    </div>
+                    <form class="row" action="/signup" method="post" id="form">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-fn">Name</label>
+                                {{!-- <input name="firstName" class="form-control" type="text" id="reg-fn"> --}}
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first Name">
+                                <span id="errfName" style="color: crimson;"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-ln">Last Name</label>
+                                <input name="lname" class="form-control" type="text" id="lname" placeholder="Enter last name">
+                                <span id="errlName" style="color: crimson;"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-email">E-mail Address</label>
+                                <input name="email" class="form-control" type="email" placeholder="Enter your email" id="email">
+                                <span id="errEmail" style="color: crimson;"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-phone">Phone Number</label>
+                                <input name="number" class="form-control" type="number" placeholder="Enter your phone number" id="phone">
+                                <span id="errNumber" style="color: crimson;"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-pass">Password</label>
+                                <input name="password" class="form-control" type="password" placeholder="Enter password" id="pass">
+                                <span id="errpass" style="color: crimson;"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-pass-confirm">Confirm Password</label>
+                                <input name="password2" class="form-control" type="password" placeholder="Confirm password" id="pass-confirm">
+                                <span id="errpass2" style="color: crimson;"></span>
+
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button class="btn" type="submit">Register</button>
+                        </div>
+                        <p class="outer-link">Already have an account? <a href="/login">Login Now</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+	let form=document.getElementById('form')
+
+	let fname=document.getElementById('fname')
+    let lname=document.getElementById('lname')
+	let email=document.getElementById('email')
+    let phoneNumber=document.getElementById('phone')
+	let password=document.getElementById('pass')
+	let password1=document.getElementById('pass-confirm')
+	
+
+
+	let fnameErr=document.getElementById('errfName')
+    let lnameErr=document.getElementById('errlName')
+	let emailErr=document.getElementById('errEmail')
+    let phoneNumberErr=document.getElementById('errNumber')
+	let passwordErr=document.getElementById('errpass')
+	let password1Err=document.getElementById('errpass2')
+
+
+	
+	form.addEventListener('submit',(e)=>{
+
+          let fnameMessage=[]
+          let lnameMessage=[]
+	let emailMessage=[]
+	let passwordMessage=[]
+	let password1Message=[]
+	let phoneNumberMessage=[]
+                  
+	           if(fname.value==''||fname.value==null){
+			 fnameMessage.push('Enter the Name')
+		 }else if(isNaN(fname.value)==false){
+			 fnameMessage.push('Numbers are Not Allowed')
+		 }
+          if(lname.value==''||lname.value==null){
+			 lnameMessage.push('Enter the Name')
+		 }else if(isNaN(fname.value)==false){
+			 lnameMessage.push('Numbers are Not Allowed')
+		 }
+		
+
+		if(email.value===''||email.value==null){
+                        emailMessage.push('Please enter Email') 
+                    }else
+                     if(email.value.indexOf('@')<=0){
+                         emailMessage.push('Invaild Email')
+                   }else if(email.value.charAt(email.value.length-4)!='.'){
+                       emailMessage.push('Email format Incorrect') 
+                   }
+                    
+	         
+	         if(phone.value==''||phone.value==null){
+		         phoneNumberMessage.push('Please Enter PhoneNumber')
+	         }else if(isNaN(phone.value)==true){
+		         phoneNumberMessage.push('Only Numbers are Allowed')
+	         }else if(phone.value.length !=10){
+		         phoneNumberMessage.push('PhoneNumber Must be 10 digits')
+	         }
+
+	       
+
+	         if(pass.value==null||pass.value==''){
+
+		         passwordMessage.push('Enter Password')
+	         }else if(pass.value.length<5){
+		         passwordMessage.push('Password length Must be 5')
+	         }
+	     
+        
+	         
+	        
+
+
+
+
+		 if(fnameMessage.length>0){
+			 e.preventDefault()
+			errfName.innerHTML=fnameMessage.join('')
+		 }
+          if(lnameMessage.length>0){
+			 e.preventDefault()
+			errlName.innerHTML=lnameMessage.join('')
+		 }
+
+		 if(emailMessage.length>0){
+			 e.preventDefault()
+			 errEmail.innerHTML=emailMessage.join('')
+		 }
+		
+		 if(passwordMessage.length>0){
+			 e.preventDefault()
+			errpass.innerHTML=passwordMessage.join('')
+		 }
+	
+		  if(password1Message.length>0){
+			  e.preventDefault()
+			  errpass2.innerHTML=password1Message.join('')
+		  }
+		 
+		  if(phoneNumberMessage.length>0){
+			  e.preventDefault()
+			  errNumber.innerHTML=phoneNumberMessage.join('')
+		  }
+
+	})
+</script>

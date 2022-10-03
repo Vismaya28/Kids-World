@@ -1,0 +1,328 @@
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">checkout</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href="index-2.html"><i class="lni lni-home"></i> Home</a></li>
+                    <li><a href="index-2.html">Shop</a></li>
+                    <li>checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="checkout-wrapper section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="checkout-steps-form-style-1">
+                    <ul id="accordionExample">
+                        
+                        <div class="card">
+  <div class="card-body">
+   
+  
+<form action="" id="checkout-form">
+        {{!-- <div class="row"> --}}
+            <div class="col-md-5">
+                <h2>Enter delivery details</h2><br>
+                <div>
+                   
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="name" name="fname">
+                    <label for="">House Name</label>
+                    <input type="text" class="form-control" id="houseName" name="houseName">
+                    <label for="">City</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                    <label for="">Pincode</label>
+                    <input type="number" class="form-control" id="pinCode" name="pincode">
+                    <label for="">Mobile</label>
+                    <input type="number" class="form-control" type="text" id="phoneNumber" name="mobile">
+                    <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+                    
+                    {{!-- <button class="btn btn-primary" href="">Submit</button> --}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                
+        </div>
+        </form>
+        </div>
+</div>
+
+                        <div  style="display:flex;">
+ {{#each allAddress}}
+
+    <div class="card" style="width: 18rem;float:left;">
+ 
+
+  <div class="card-body">
+
+     <h5 class="card-title">Address</h5>
+    <p class="card-text" id="addressName">{{this.name}}</p>
+    <p class="card-text" id="addressHouse">{{this.houseName}}</p>
+    <p class="card-text" id="addressCity">{{this.city}}</p>
+    <p class="card-text" id="addressPin">{{this.pinCode}}</p>
+    <p class="card-text" id="addressPhone">{{this.phoneNumber}}</p>
+<button class="btn btn-primary" onclick="choose('{{this._id}}','{{this.name}}','{{this.houseName}}','{{this.city}}','{{this.pinCode}}','{{this.phoneNumber}}')">Choose</button>
+
+    
+  
+  </div>
+
+
+
+
+</div>
+{{/each}}
+</div>
+
+
+                        
+                    </ul>
+                </div>
+            </div>
+            {{!-- <div class="col-lg-4">
+                <div class="checkout-sidebar">
+                    <div class="checkout-sidebar-coupon">
+                        <p>Appy Coupon to get discount!</p>
+                        <form action="#">
+                            <div class="single-form form-default">
+                                <div class="form-input form">
+                                    <input type="text" placeholder="Coupon Code">
+                                </div>
+                                {{#each coupon}}
+                                <option value="{{this.couponCode}}">{{this.couponCode}}:
+                                    <h6>will get {{offerPercent}}%</h6>
+                                </option>
+                                {{/each}}
+                                <div class="buttonC">
+                                    <button class="Cbtn">Apply</button>
+                                </div>
+                            </div> --}}
+                            <div class="col-lg-4">
+                                {{!-- <div class="col-md-12"> --}}
+                                  <form action="post">
+                                  <div>
+                                    <label for="" class="material-icons text-black mr-2 h4">Apply coupon</label>
+                                     <span><i class="lni lni-badge-percent" aria-hidden="true"></i></span><br>
+                                     <h6 id="success" style="color:green"></h6>
+                                     <h6 id="err" style="color:red"></h6>
+                                     <select name="selectpicker product-add-category" style="height:40px;border-radius:1px;border-style:dashed;" name="couponCode" id="couponCode">
+                                        <option value="" style="border-style:none;color:red">Select a Coupon</option>
+                                        {{#each coupon}}
+                                        <option value="{{this.couponCode}}" style="color: red;">{{this.couponCode}}:
+                                            <h6>will get{{offerPercent}}%</h6>
+                                        </option>
+                                        {{/each}}
+                                     </select>
+                                     <input type="text" id="total" name="total" value="{{total}}" hidden>
+                                     <button onclick="applyCoupon(event)" class="btn btn-primary btn-sm" id="button-addon">Apply</button>
+                                  </div>
+
+                                  </form>
+                                </div>
+                            {{!-- </div> --}}
+                        </form>
+                    </div>
+                    <div class="checkout-sidebar-price-table mt-30">
+                        <div class="container mt-5 ml-5 checkout">
+                    
+                    <span>
+                        <h5>Total Amount: Rs.{{total}}</h5>
+                        <input type="text" id="totalz" value="{{total}}">
+                    </span>
+                    <hr>
+                    <div class="payment">
+                        <p>Payment method</p>
+                        <label for="" class="radio-inline mt-3">
+                            <input type="radio" name="payment-method" value="COD">checked COD
+                        </label>
+                        <label for="" class="radio-inline mt-3">
+                            <input type="radio" name="payment-method" id="" value="Razorpay">Checked Razorpay
+                        </label>
+                        <label for="" class="radio-inline mt-3">
+                            <input type="radio" name="payment-method" id="" value="Paypal">Checked Paypal
+                        </label>
+                        <button class="btn btn-primary float-right mt-5"  type="submit">Checkout</button>
+                        
+                </div>
+            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .form-control{
+        width:46rem;
+    }
+    .card{
+        margin-top: 10px;
+        margin-left: -41px;
+    }
+    .checkout-sidebar-coupon{
+margin-top:10px
+    }
+    .Cbtn{
+        background-color: #0167f4;
+        border-radius: 4px;
+        border: none;
+        padding: 10px 24px;
+        margin-top: 7px;
+        height: 45px;
+        margin-left: 45px;
+        color: #fff;
+        margin-left: 275px;
+    }
+</style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  let dname=document.getElementById('name')
+  let dhouseName =document.getElementById('houseName')
+  let dcity =document.getElementById('city')
+  let dpinCode =document.getElementById('pinCode')
+  let dphoneNumber =document.getElementById('phoneNumber')
+
+    function choose(addId,name,houseName,city,pinCode,phoneNumber) {
+
+		document.getElementById('name').value = name;
+		document.getElementById('houseName').value = houseName;
+		document.getElementById('city').value = city;
+		document.getElementById('pinCode').value = pinCode;
+		document.getElementById('phoneNumber').value = phoneNumber;
+
+
+	}
+
+
+
+
+
+   $("#checkout-form").submit((e)=>{ 
+  
+    e.preventDefault()
+    $.ajax({
+        url:'/place-order',
+        method:"post",
+        data:$('#checkout-form').serialize(),
+        success:(response)=>{
+            
+
+            
+            if(response.codSuccess){
+                console.log("got it")
+                location.href='/order-success'
+            }else if(response.razorpaySuccess){
+             console.log("payment")
+
+                razorpayPayment(response)  
+            }else if(response.url){
+                location.href = response.url
+            }
+        }
+    })
+   })
+   function razorpayPayment(order){
+    var options = {
+    "key": "rzp_test_FtYHG5tZK4sqFj", // Enter the Key ID generated from the Dashboard
+    "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "Kids World",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "handler": function (response){
+        alert(response.razorpay_payment_id);
+        alert(response.razorpay_order_id);
+        alert(response.razorpay_signature);
+
+        verifyPayment(response,order)
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9999999999"
+    },
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+ rzp1.open();
+   }
+   function verifyPayment(payment,order){
+   $.ajax({
+    url:'/verify-payment',
+    data:{
+        payment,
+        order
+    },
+    method:'post'
+   
+   })
+   }
+
+   function applyCoupon(){
+    event.preventDefault();
+		let total = document.getElementById('total').value;
+        alert('total',totalz)
+		let couponCode = document.getElementById('couponCode').value;
+		let err = document.getElementById('err')
+		let success = document.getElementById('success')
+		if (couponCode == '' || couponCode == null) {
+			err.innerHTML = 'Enter the Code'
+		} else {
+
+			$.ajax({
+				url: '/apply-coupon',
+				data: {
+					total: total,
+					couponCode: couponCode
+				},
+				method: 'post',
+				success: (response) => {
+					if (response.couponSuccess) {
+
+
+						success.innerHTML = 'coupon Applyed Successfully'
+						document.getElementById('price').innerHTML = response.total;
+						document.getElementById('price1').innerHTML = response.total;
+						document.getElementById('total').value = response.total;
+						let save = response.oldTotal - response.total;
+
+
+
+					}
+					if (response.couponUsed) {
+						err.innerHTML = 'You Alredy used The Coupon'
+					}
+					if (response.couponExpired) {
+						err.innerHTML = 'Coupon Expired'
+					}
+					if (response.invalidCoupon) {
+
+						err.innerHTML = 'Invalid Coupon'
+					}
+
+
+
+				}
+			})
+		}
+   }
+</script>

@@ -1,0 +1,278 @@
+<body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.5.3/dist/js/swiffy-slider.min.js" crossorigin="anonymous"
+    defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.5.3/dist/css/swiffy-slider.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="stylesheets/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="stylesheets/assets/css/LineIcons.3.0.css">
+  <link rel="stylesheet" href="stylesheets/assets/css/tiny-slider.css">
+  <link rel="stylesheet" href="stylesheets/assets/css/glightbox.min.css">
+  <link rel="stylesheet" href="stylesheets/assets/css/main.css">
+
+
+  <div class="swiffy-slider">
+    <ul class="slider-container">
+      {{#each Banners}}
+      <li><img src="banner-images/{{this._id}}.jpg" style="max-width: auto;height: auto;"></li>
+      {{/each}}
+      {{!-- <li><img src="https://source.unsplash.com/nKAglN6HBH8/1600x900" style="max-width: 100%;height: auto;"></li>
+      <li><img src="https://source.unsplash.com/E9ZwWcMGzj8/1600x900" style="max-width: 100%;height: auto;"></li> --}}
+    </ul>
+
+    <button type="button" class="slider-nav"></button>
+    <button type="button" class="slider-nav slider-nav-next"></button>
+
+    <div class="slider-indicators">
+      <button class="active"></button>
+      <button></button>
+      <button></button>
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="section">
+
+
+    <div class="  container" style="margin:auto">
+
+      <section class=" row  col-md-12">
+
+        {{#each products}}
+        <div class="col-lg-3 col-md-3 col-12 ">
+
+
+          <div class="single-product">
+            <div class="product-image">
+              <img src="/images/{{this._id}}.jpg" alt="#">
+              {{#if this.offer}}
+
+              <span class="sale-tag">-{{this.offerPer}}%</span>
+              {{/if}}
+
+              {{!-- <div class="wish"> --}}
+                {{!-- <span class="lni lni-heart"></span> --}}
+              {{!-- </div> --}}
+              <div class="button">
+
+                <p><button class="btn" type="submit" onclick="addToCart('{{this._id}}')">Add to Cart</button></p>
+
+              </div>
+            </div>
+            <div class="product-info">
+              <span class="category">{{this.category_name}}</span>
+              <h4 class="title">
+                <a href="">{{this.Description}}</a>
+              </h4>
+
+              <div class="price">
+                <span>Price:₹{{this.Price}}</span><br>
+                {{#if this.offer}}
+                <span class="discount-price">Old Price:₹{{this.actualPrice}}</span>
+            
+
+
+                {{!-- <span class="discount-price">{{this.actualPrice}}</span> --}}
+                {{/if}}
+                <div class="wish">
+                  
+                {{!-- {{#if ../user}}
+                  {{#if wishList}}
+
+									<button  id="remove" onclick="removeWih('{{this._id}}')" class="add-to-wishlist"><i style="color:red;display:" class="fa fa-heart"></i><span class="tooltipp">remove</span></button>
+
+									{{else}}
+									<button  id="add" onclick="addToWis('{{this._id}}')" class="add-to-wishlist" style="display:;"><i class="fa fa-heart-o"></i><span class="tooltipp"><i class="lni lni-heart"></i></span></button>
+									{{/if}}
+
+{{/if}} --}}
+{{#if this.wish}}
+                <button id="wishbox{{this._id}}" class="btn-addwish-b11"
+                  style="float: right;border-style: none;background: none" onclick="removeWish('{{this._id}}')"><i
+                    class="lni lni-heart" style="color:crimson;"></i></button>
+                <button id="addwishbox{{this._id}}" class="btn-addwish-b11"
+                  style="display:none;float: right;border-style: none;background: none"
+                  onclick="addToWish('{{this._id}}')"><i class="lni lni-heart " style="color:black;"></i></button>
+                {{else}}
+                <button id="wishbox{{this._id}}" class="btn-addwish-b11"
+                  style="display:none;float: right;border-style: none;background: none;"
+                  onclick="removeWish('{{this._id}}')"><i class="lni lni-heart" style="color:crimson;"></i></button>
+                <button id="addwishbox{{this._id}}" class="btn-addwish-b11"
+                  style="float: right;border-style: none;background: none;" onclick="addToWish('{{this._id}}')"><i
+                    class="lni lni-heart" style="color:black;"></i></button>
+                {{/if}}
+                   <div class="details">
+                    <a href="/view-details?Id={{this._id}}" class="btn btn-primary">View details</a>
+                   </div>
+            </div>
+              </div>
+            </div>
+          </div>
+
+          {{!--
+        </div> --}}
+    </div>
+    {{/each}}
+    {{!-- <div id="pagination-container"></div> --}}
+
+
+    </section>
+
+
+
+</body>
+
+{{!-- <style>
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 18rem;
+    height: auto;
+    float: right;
+    padding: 3rem;
+    margin: 10px;
+    max-height: 450px;
+
+    text-align: left;
+    font-family: arial;
+  }
+
+  .text {
+    text-align: left;
+  }
+
+  .name {
+    text-align: center;
+  }
+
+  .price {
+    color: grey;
+    font-size: 15px;
+  }
+
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .card button:hover {
+    opacity: 0.7;
+
+  }
+
+  .simple-pagination ul {
+    margin: 0 0 20px;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  .simple-pagination li {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  .simple-pagination li a,
+  .simple-pagination li span {
+    color: #666;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #EEE;
+    background-color: #FFF;
+    box-shadow: 0px 0px 10px 0px #EEE;
+  }
+
+  .simple-pagination .current {
+    color: #FFF;
+    background-color: #FF7182;
+    border-color: #FF7182;
+  }
+
+  .simple-pagination .prev.current,
+  .simple-pagination .next.current {
+    background: #e04e60;
+  } --}}
+
+  
+{{!-- </style> --}}
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+
+<script>
+  function addToCart(proId) {
+
+    $.ajax({
+      url: 'add-to-cart/:id',
+      method: 'get',
+      success: (response) => {
+        if (response.status) {
+          location.reload() 
+        }
+      }
+    })
+
+  }
+
+  
+function addToWish(proId) {
+    $.ajax({
+      url: '/add-to-wish/' + proId,
+      method: 'get',
+      success: (response) => {
+        if (response) {
+          $("#addwishbox" + proId).hide();
+          $("#wishbox" + proId).show();
+          let count = $('#wish-count').html()
+          count = parseInt(count) + 1
+          $("#wish-count").html(count)
+        }
+      }
+    })
+  }
+
+  function removeWish(proId) {
+    $.ajax({
+      url: '/remove-wishproduct/' + proId,
+      method: 'get',
+      success: (response) => {
+        if (response) {
+          $("#addwishbox" + proId).show();
+          $("#wishbox" + proId).hide();
+        }
+      }
+    })
+  }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+<script>
+  function addToCart(){
+    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Your work has been saved',
+  showConfirmButton: false,
+  timer: 1500
+})
+  }
+</script>

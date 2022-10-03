@@ -1,0 +1,46 @@
+
+
+<div class="container">
+    {{!-- <div class="col-md-6"> --}}
+{{!-- <div class="p-3 mb-2 bg-light text-dark"> --}}
+<div class="box">
+   
+
+    <h2 class="text-center">Edit profile</h2>
+             <form action="/profile" method="post" enctype="multipart/form-data" class="form">
+                 
+                 <label for="">Name</label>
+                 <input type="text" name="fname" class="form-control" id="fname"  value="{{user.fname}}">
+                 <span id="nameErr" style="color:crimson"></span>
+                 
+                 
+
+                <label for="">Email</label>
+                 <input type="email" name="email" class="form-control" id="email"  value="{{user.email}}">
+                 <span id="houseNameErr" style="color:crimson"></span>
+
+                  <label for="">Phone Number</label>
+                  <input type="number" name="number" class="form-control" id="phone"  value="{{user.number}}">
+                  <span id="phoneNumberErr" style="color: crimson;"></span>
+                  
+
+
+                  <button id="Submit" class="btn btn-primary mt-3" value="edit-profile">Submit</button>
+
+                 </form>
+</div>
+
+    {{!-- </div> --}}
+</div>
+
+<style>
+    .box{
+       
+       margin-right: 100px;
+   }
+   .form{
+       padding: 150px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+   }
+</style>

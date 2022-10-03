@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="/stylesheets/assets/css/bootstrap.min.css" >
+<link rel="stylesheet" href="/stylesheets/assets/css/LineIcons.3.0.css" >
+<link rel="stylesheet" href="/stylesheets/assets/css/tiny-slider.css" >
+<link rel="stylesheet" href="/stylesheets/assets/css/glightbox.min.css" >
+<link rel="stylesheet" href="/stylesheets/assets/css/main.css" >
+
+<div class="container">
+<div class="d-flex justify-content-center align-items-center container">
+  <form class="otp-number" method="post" action="/otp-number" id="Form">
+        <div class="card py-5 px-3">
+            <h5 class="m-0">Otp login</h5><span class="mobile-text" >Enter your mobile phone </span>
+            <div class="d-flex flex-row mt-5"><input type="text" name ="number" class="form-control" autofocus="" id="otp-Number">
+            <span id="errorNumber" style="color:crimson"></span>
+            </div>
+              <button type="submit" href="otp-code" class="btn btn-primary mt-5">Submit</button>
+              
+            <div class="text-center mt-5"><span class="d-block mobile-text">Didn't receive the code?</span><span class="font-weight-bold text-danger cursor">Resend</span></div>
+      
+        </div>
+        </form>
+    </div>
+    </div>
+<script>
+
+              const input=document.getElementById("otp-Number")
+              const form=document.getElementById("Form");
+               const error1=document.getElementById("errorNumber");
+
+                    form.addEventListener(e)=>{
+                              e.preventDefault()
+
+            let message=[] 
+           if(inputvalue.length==''||input.value==null){
+                     message.push('Enter Phone number')
+           }else if(isNaN(input.value)==true){
+                     message.push('Only Numbers Allowed')
+           }
+
+           if(message.value>0){
+                     e.preventDefault()
+                     error1.innerText=message.join('')
+           }
+
+                    }
+          </script>

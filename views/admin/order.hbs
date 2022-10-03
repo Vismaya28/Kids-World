@@ -1,0 +1,124 @@
+<body>
+
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+<section>
+  
+  <div class="container">
+    <div class="container" >
+      <div class="row mb-3 ">
+
+<div class="col-md-12 d-flex">
+          <div class="col-md-6"></div>
+          <div class="col-md-3">
+            </div>
+
+          <div class="col-md-3 ">
+
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+    <table  class="table caption-top" id="DataTable">
+  <caption></caption>
+ <thead>
+<tr>
+<th scope="col">Sl No</th>
+<th scope="col">Name</th>
+<th scope="col">Address</th>
+<th scope="col">Amount(₹)</th>
+<th scope="col">Payment</th>
+<th scope="col">Status</th>
+<th scope="col">Change status</th>
+
+</tr>
+</thead>
+
+<tbody>
+  {{#each orders}}
+<tr class="list-item">
+<td scope="row">{{@index}}</td>
+<td>{{this.deliveryDetails.name}}</td>
+<td>
+       {{this.deliveryDetails.houseName}}
+       {{this.deliveryDetails.city}},<br>
+       {{this.deliveryDetails.pincode}}
+</td>
+<td>{{this.totalAmount}}</td>
+<td>{{this.paymentMethod}}</td>
+<td>{{this.status}}</td>
+
+<td>
+
+ {{!-- <select class="selectpicker order-change-" id="name"  aria-label="Default select example">
+  <option selected>{{this.status}}</option>
+  <option onchange="changStatus()" >Cancelled</option>
+  <option onchange="" value="2" href="/admin/change-status?id={{this._id}}&status=Shipped">Shipped</option>
+  <option value="3" href="/admin/change-status?id={{this._id}}&status=Delivered">Delivered</option>
+  <option value="4" href="/admin/change-status?id={{this._id}}&status=Placed">Placed</option>
+
+</select> --}}
+
+{{!-- <select name="status" id="name" class="selectpicker order-change-status">
+<option value="">{{this.status}}</option>
+
+<option value="">Cancelled</option>
+<option value=""><a  href="/admin/change-status?id={{this._id}}&status=Shipped">Shipped</a></option>
+<option value="" href="/admin/change-status?id={{this._id}}&status=Delivered">Delivered</option>
+<option value="" href="/admin/change-status?id={{this._id}}&status=Placed">Placed</option>
+
+
+
+
+</select> --}}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    {{this.status}}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/admin/changeStatus?id={{this._id}}&status=Shipped">Shipped</a></li>
+    <li><a class="dropdown-item" href="/admin/changeStatus?id={{this._id}}&status=Delivered"> Delivered</a></li>
+    <li><a class="dropdown-item" href="/admin/changeStatus?id={{this._id}}&status=Placed">Placed</a></li>
+    <li><a class="dropdown-item" href="/admin/changeStatus?id={{this._id}}&status=Cancelled">Cancelled</a></li>
+  </ul>
+</div>
+</td>
+
+
+</tr>
+{{/each}}
+</tbody>
+  
+</table>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+
+</body>
+
+<script>
+  function changeStatus(){
+   
+     $.ajax({
+    url:'/change-status',
+    data:{
+      orderId:orderId,
+      newStatus:status
+    }
+    method:'POST',
+    success:(response)=>{
+        if(response.changeStatus){
+            
+            location.reload()
+        }
+    }
+  })
+
+  }
+</script>

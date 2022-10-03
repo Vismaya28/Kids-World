@@ -1,0 +1,188 @@
+
+  
+
+<div class="container">
+    {{!-- <div class="col-md-6"> --}}
+{{!-- <div class="p-3 mb-2 bg-light text-dark"> --}}
+<div class="box">
+   
+
+    <h2 class="text-center">Add address</h2>
+             <form action="/add-address" method="post" enctype="multipart/form-data" class="form">
+
+                 <label for="">Name</label>
+                 <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                 <span id="nameErr" style="color:crimson"></span>
+                 
+                 
+                <label for="">House Name</label>
+                 <input type="text" name="houseName" class="form-control" id="houseName" placeholder="Enter your house name">
+                 <span id="houseNameErr" style="color:crimson"></span>
+
+                 <label for="">City</label>
+                 <input type="text" name="city" class="form-control" id="city" placeholder="Enter your city"> 
+                  <span id="cityErr" style="color:crimson"></span>
+
+                  <label for="">Pincode</label>
+                  <input type="number" name="pinCode" class="form-control" id="pinCode" placeholder="Enter you pincode">
+                  <span id="pinCodeErr" style="color: crimson;"></span>
+
+                  <label for="">Phone Number</label>
+                  <input type="number" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Enter your phone number">
+                  <span id="phoneNumberErr" style="color: crimson;"></span>
+                  
+
+
+                  <button id="Submit" class="btn btn-primary mt-3">Submit</button>
+
+                 </form>
+</div>
+
+    {{!-- </div> --}}
+</div>
+
+{{#if address}}
+<div class="container mt-5">
+
+    <div class="col-md-7">
+              <div class="card mb-3">
+                <div class="card-body">
+                          {{!-- <form method="post" action="/edit-profile"> --}}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Name</h6>
+                    </div>
+                    <input id="fname" name="fname" style="background-color: transparent;  border:transparent" class="text-secondary" type="text" value="{{user.fname}}" disabled>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">House Name</h6>
+                    </div>
+                     <input id="houseName"  style="background-color: transparent; border:transparent" name="houseName" class="input-style:none;" type="text" value="{{user.houseName}}" disabled>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">City</h6>
+                    </div>
+                     <input id="city"  style="background-color: transparent; border:transparent" name="city" class="input-style:none;" type="text" value="{{user.city}}" disabled>
+                  </div>
+                  <hr>
+                     <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Pincode</h6>
+                    </div>
+                    <input id="pinCode" name="pinCode"  style="background-color: transparent; border:transparent" class="" type="text" value="{{user.pinCode}}" disabled>
+
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone Number</h6>
+                    </div>
+                    <input id="phoneNumber" name="phoneNumber"  style="background-color: transparent; border:transparent" class="" type="text" value="{{user.number}}" disabled>
+
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 id="password" class="mb-0" hidden>Old Password</h6>
+                    </div>
+                    <input id="password1" name="oldPassword"  style="background-color: transparent; border:transparent" class="" type="text"  hidden>
+                    <h6 class="mb-0" id="password2" hidden>New Password</h6>
+                    <input id="password3" name="newPassword"  style="background-color: transparent; border:transparent" class="" type="text"  hidden>
+
+                  </div>
+                  </form>
+                </div>
+              </div>
+              </div>
+    </div>
+    {{/if}}
+
+<style>
+   .box{
+       
+       margin-right: 100px;
+   }
+   .form{
+       padding: 150px;
+       padding-top: 10px;
+       padding-bottom: 10px;
+   }
+    
+</style>
+<script>
+    let form=document.getElementById('form')
+    let name = document.getElementById('name')
+    let houseName = document.getElementById('houseName')
+    let city = document.getElementById('city')
+    let pinCode = document.getElementById('pinCode')
+    let phoneNumber = document.getElementById('phoneNumber')
+
+    let nameErr = document.getElementById('nameErr')
+    let houseNameErr = document.getElementById('houseNameErr')
+    let cityErr = document.getElementById('cityErr')
+    let pinCodeErr = document.getElementById('pinCodeErr')
+    let phoneNumberErr = document.getElementById('phoneNumberErr')
+
+    let nameMsg = []
+    let houseMsg = []
+    let cityMsg = []
+    let pinMsg = []
+    let phoneMsg = []
+
+
+    function validation1(e) {
+
+
+      if (name.value == null || name.value == "") {
+        nameMsg.push('please enter Name')
+      }
+      if (houseName.value == null || houseName.value == "") {
+        houseMsg.push('please enter HouseName')
+      }
+      if (city.value == null || city.value == "") {
+        cityMsg.push("Please enter city Name")
+      }
+      if (pinCode.value == null || pinCode.value == "") {
+        pinMsg.push('Please enter PinCode')
+      } else if (isNaN(pinCode.value) == true) {
+
+        pinMsg.push('Incorrect Format')
+      }
+      if (phoneNumber.value == null || phoneNumber.value == "") {
+        phoneMsg.push('please enter PhoneNumber')
+      } else if (phoneNumber.value.length < 10 || phoneNumber.value.length > 10) {
+        phoneMsg.push('Incorrect phoneNumber')
+      } else if (isNaN(phoneNumber.value) == true) {
+        phoneMsg.push('Please enter in Number Format')
+      }
+
+
+
+      if (nameMsg.length > 0) {
+        e.preventDefault()
+        nameErr.innerHTML = "";
+        nameErr.innerHTML = nameMsg.join('')
+      }
+
+      if (houseMsg.length > 0) {
+        e.preventDefault()
+        houseNameErr.innerHTML = houseMsg.join('')
+      }
+      if (cityMsg.length > 0) {
+        e.preventDefault()
+        cityErr.innerHTML = cityMsg.join('')
+      }
+      if (pinMsg.length > 0) {
+        e.preventDefault()
+        pinCodeErr.innerHTML = pinMsg.join('')
+      }
+      if (phoneMsg.length > 0) {
+        e.preventDefault()
+        phoneNumberErr.innerHTML = phoneMsg.join('')
+      }
+    }
+  </script>

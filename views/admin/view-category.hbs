@@ -1,0 +1,65 @@
+<section>
+    <div class="container">
+        <div class="row mt-4">
+         <a href="/admin/add-category" class="btn btn-success ml-auto mb-5">Add Category</a>
+        </div>
+        <table class="table mt-5" id="productTable">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      
+     
+      <th scope="col">Category</th>
+      
+      
+      
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each categorys}}
+    <tr>
+      <td scope="row">1</td>
+  
+     
+      <td>{{this.category_name}}</td>
+      
+      
+        <td>
+          {{!-- <a href="/admin/edit-category/{{this.id}}" class="btn btn-primary">Edit</a> --}}
+        <a href="/admin/delete-category/{{this.id}}" class="btn btn-danger" onclick='deleteCat(event)' >Delete</a></td>
+        
+        
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+    </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+<script>
+  function deleteCat(event){
+    var link=event.currentTarget.href;
+    var name=event.currentTarget.name;
+    event.preventDefault()
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to delete",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+       window.location=link
+      }else{
+        return false
+      }
+    })
+
+  }
+</script>

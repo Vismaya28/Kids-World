@@ -1,0 +1,21 @@
+
+<section>
+    <div class="container mt-4">
+     <div class="row">
+         <div class="col-md-6">
+             <h2 class="text-center">Edit category</h2>
+             <form action="/admin/edit-category?id={{data._id}}&&data={{data.category}}" method="post" enctype="multipart/form-data">
+                 <label for="">Category Name</label>
+                 <input type="text" name="category_name" class="form-control" id="name" value="{{data.category_name}}" required>
+                 <span id="errorName" style="color:crimson"></span>
+                 
+                 
+               
+                 <button type="Submit" class="btn btn-success mt-4">Submit</button>
+
+             </form>
+         </div>
+     </div>
+    </div>
+    
+</section>

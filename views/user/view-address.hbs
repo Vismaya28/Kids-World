@@ -1,0 +1,60 @@
+<section>
+    
+    <div class="container mt-5">
+
+    <div class="col-md-7">
+              <div class="card mb-3">
+                <div class="card-body">
+                          {{!-- <form method="post" action="/edit-profile"> --}}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Name</h6>
+                    </div>
+                    <input id="fname" name="fname" style="background-color: transparent;  border:transparent" class="text-secondary" type="text" value="{{user.fname}}" disabled>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">House Name</h6>
+                    </div>
+                     <input id="houseName"  style="background-color: transparent; border:transparent" name="houseName" class="input-style:none;" type="text" value="{{user.houseName}}" disabled>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">City</h6>
+                    </div>
+                     <input id="city"  style="background-color: transparent; border:transparent" name="city" class="input-style:none;" type="text" value="{{user.city}}" disabled>
+                  </div>
+                  <hr>
+                     <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Pincode</h6>
+                    </div>
+                    <input id="pinCode" name="pinCode"  style="background-color: transparent; border:transparent" class="" type="text" value="{{user.pinCode}}" disabled>
+
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone Number</h6>
+                    </div>
+                    <input id="phoneNumber" name="phoneNumber"  style="background-color: transparent; border:transparent" class="" type="text" value="{{user.number}}" disabled>
+
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 id="password" class="mb-0" hidden>Old Password</h6>
+                    </div>
+                    <input id="password1" name="oldPassword"  style="background-color: transparent; border:transparent" class="" type="text"  hidden>
+                    <h6 class="mb-0" id="password2" hidden>New Password</h6>
+                    <input id="password3" name="newPassword"  style="background-color: transparent; border:transparent" class="" type="text"  hidden>
+
+                  </div>
+                  </form>
+                </div>
+              </div>
+              </div>
+    </div>
+</section>
